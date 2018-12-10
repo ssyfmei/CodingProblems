@@ -15,21 +15,21 @@ public class Solution {
         int[] dir = {-1, 0, 1, 0, -1};
         for(int i = 0; i < m; i++) {
             for(int j = 0; j < n; j++) {
-                visited[i][j] = true;
+                visited[i][j] = true;  // BUG
                 dfs(i, j, board, root, visited, res, dir);
-                visited[i][j] = false;
+                visited[i][j] = false; // BUG
             }
         }
         return res;
     }
     
     private void dfs(int x, int y, char[][] board, TrieNode root, boolean[][] visited, List<String> res, int[] dir) {
-        TrieNode cur = root;
-        char ch = board[x][y];
+        TrieNode cur = root; // BUG
+        char ch = board[x][y]; // BUG
         if(cur.next[ch - 'a'] == null) {
             return;
         }
-        cur = cur.next[ch - 'a'];
+        cur = cur.next[ch - 'a']; // BUG
         if(cur.exist) {
             res.add(cur.word);
             cur.exist = false;
