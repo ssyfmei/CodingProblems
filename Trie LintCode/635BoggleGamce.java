@@ -18,12 +18,13 @@ public class Solution {
     private void dfs(TrieNode root, TrieNode cur, int r, int c, int cnt, char[][] board) {
         maxCnt = Math.max(maxCnt, cnt);
         int m = board.length, n = board[0].length;
-        char ch = board[r][c];
-        board[r][c] = '#';
-        if(ch == '#' || cur.next[ch - 'a'] == null) {
-            board[r][c] = ch;
+        
+        if(board[r][c] == '#' || cur.next[board[r][c] - 'a'] == null) {
             return;
         }
+        char ch = board[r][c];
+        board[r][c] = '#';
+        
         cur = cur.next[ch - 'a'];
         if(cur.exist) {
             for(int i = 0; i < m; i++) {
