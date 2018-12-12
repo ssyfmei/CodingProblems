@@ -17,15 +17,14 @@ public class Solution {
     
     private void dfs(TrieNode root, TrieNode cur, int r, int c, int cnt, char[][] board) {
         maxCnt = Math.max(maxCnt, cnt);
-        int m = board.length, n = board[0].length;
-        
         if(board[r][c] == '#' || cur.next[board[r][c] - 'a'] == null) {
             return;
         }
         char ch = board[r][c];
         board[r][c] = '#';
-        
         cur = cur.next[ch - 'a'];
+        
+        int m = board.length, n = board[0].length;
         if(cur.exist) {
             for(int i = 0; i < m; i++) {
                 for(int j = 0; j < n; j++) {
@@ -43,7 +42,6 @@ public class Solution {
         }
         board[r][c] = ch;
     }
-    
     
     private void buildTrie(TrieNode root, String[] words) {
         for(String word : words) {
